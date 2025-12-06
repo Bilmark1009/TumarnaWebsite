@@ -1,6 +1,5 @@
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
-import TrustBar from '../components/TrustBar';
 import Features from '../components/Features';
 import Security from '../components/Security';
 import Screenshots from '../components/Screenshots';
@@ -17,7 +16,6 @@ const Index = () => {
       <Navigation />
       <main>
         <Hero />
-        <TrustBar />
         <Features />
         <Security />
         <Screenshots />

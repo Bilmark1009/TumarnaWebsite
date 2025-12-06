@@ -53,7 +53,7 @@ const Hero = () => {
                 Making every medication convenient
               </span>
             </h1>
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto lg:mx-0 px-2 sm:px-0">
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 mb-4 sm:mb-6 md:mb-8 max-w-2xl mx-auto lg:mx-0 px-2 sm:px-0 text-justify">
               Take control of your health with confidence. Manage medications safely, 
               get timely reminders, and stay protected with our comprehensive safety features.
             </p>
@@ -88,21 +88,7 @@ const Hero = () => {
               </a>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 md:gap-6 text-white/70">
-              <div className="flex items-center gap-2 text-xs sm:text-sm">
-                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary rounded-full animate-pulse-soft"></div>
-                <span>5 Users</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs sm:text-sm">
-                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary rounded-full animate-pulse-soft" style={{ animationDelay: '1s' }}></div>
-                <span>HIPAA Compliant</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs sm:text-sm">
-                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary rounded-full animate-pulse-soft" style={{ animationDelay: '2s' }}></div>
-                <span>5-Star Rated</span>
-              </div>
-            </div>
+
             
             {/* Secondary CTA for larger screens */}
           

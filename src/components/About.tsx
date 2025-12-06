@@ -5,28 +5,12 @@ import '@/styles/animations.css';
 
 const About = () => {
   const navigate = useNavigate();
-  const stats = [
-    {
-      icon: Users,
-      number: '100',
-      label: 'Active Users'
-    },
-    {
-      icon: Heart,
-      number: '100',
-      label: 'Medications Tracked'
-    },
-    {
-      icon: Award,
-      number: '4.9/5',
-      label: 'App Store Rating'
-    }
-  ];
+  
 
   return (
     <section id="about" className="py-20 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 gap-12 items-center">
           {/* Text Content */}
           <div>
             <h2 className="text-foreground mb-6">
@@ -60,33 +44,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="relative mt-8 lg:mt-0">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-              {stats.map((stat, index) => (
-                <div 
-                  key={stat.label}
-                  className="bg-background/50 backdrop-blur-sm rounded-xl p-6 border border-border/50 shadow-sm hover:shadow-md transition-all duration-300"
-                  style={{
-                    animation: `fadeIn 0.5s ease-out ${index * 0.1}s forwards`,
-                    opacity: 0,
-                    transform: 'translateY(10px)'
-                  }}
-                >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-primary to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-105">
-                    <stat.icon size={28} className="text-white" />
-                  </div>
-                  <div className="text-2xl sm:text-3xl font-bold text-foreground mb-1.5">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm sm:text-base text-muted-foreground font-medium">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-          </div>
+          
         </div>
 
         {/* Mission Statement */}

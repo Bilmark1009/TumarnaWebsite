@@ -2,25 +2,22 @@ import { Quote, Star } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Dr. Elena Cruz',
-    title: 'Clinical Pharmacist, Mercy General',
-    quote:
-      'We replaced paper med sheets with Tumarna and saw adherence jump to 97%. Nurses now act on proactive alerts instead of scrambling after a missed dose.',
-    rating: 5
+    name: 'Patient Review',
+    title: '',
+    quote: 'Reviews are to be followed — all are patient reviews.',
+    rating: 0,
   },
   {
-    name: 'Marcus Bell',
-    title: 'Primary caregiver for his dad',
-    quote:
-      'The shared timeline lets my siblings help from different cities. Refill reminders and interaction alerts removed 90% of my anxiety.',
-    rating: 5
+    name: 'Patient Review',
+    title: '',
+    quote: 'Reviews are to be followed — all are patient reviews.',
+    rating: 0,
   },
   {
-    name: 'Jessamine Yao',
-    title: 'Director of Patient Experience, VitaCare',
-    quote:
-      'Auditable logs made it easy to prove compliance during our last accreditation. The team responds to every feature request with empathy.',
-    rating: 5
+    name: 'Patient Review',
+    title: '',
+    quote: 'Reviews are to be followed — all are patient reviews.',
+    rating: 0,
   }
 ];
 
@@ -29,14 +26,14 @@ const Testimonials = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-16">
         <p className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground">
-          Voices from the field
+          From Our Early Users
         </p>
         <h2 className="text-foreground mb-4 mt-6">
-          What caregivers say
+          What our beta users are saying
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Designed alongside pharmacists, nurses, and caregivers to make every medication moment calmer.
-        </p>
+          During the beta phase, users shared how Tumarna made managing medications easier, safer, and stress-free.
+        </p>  
       </div>
 
       <div className="grid gap-8 md:grid-cols-3">
@@ -71,16 +68,7 @@ const Testimonials = () => (
         ))}
       </div>
 
-      <div className="mt-16 flex flex-wrap items-center justify-center gap-6 rounded-3xl border border-border/70 bg-white px-8 py-6 shadow-lg">
-        <div className="flex items-center gap-2 text-foreground">
-          <Star size={20} className="text-yellow-400 fill-current" />
-          <span className="font-semibold">4.9 / 5 average care team rating</span>
-        </div>
-        <span className="hidden h-6 w-px bg-border md:block" />
-        <p className="text-muted-foreground">10,000+ medication plans powered every month</p>
-        <span className="hidden h-6 w-px bg-border md:block" />
-        <p className="text-muted-foreground">Live in 42 cities and counting</p>
-      </div>
+      
     </div>
   </section>
 );
