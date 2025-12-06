@@ -1,0 +1,296 @@
+/* Tumarna Healthcare Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Healthcare-inspired color palette */
+    --background: 0 0% 100%;
+    --foreground: 210 15% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 15% 20%;
+
+    /* Primary: Trustworthy medical blue */
+    --primary: 201 83% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 201 83% 45%;
+
+    /* Secondary: Calming healthcare green */
+    --secondary: 142 71% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 142 71% 35%;
+
+    /* Accent: Soft medical teal */
+    --accent: 174 44% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Muted: Clean medical grays */
+    --muted: 210 10% 96%;
+    --muted-foreground: 210 10% 40%;
+
+    /* Healthcare gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(142 71% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(201 83% 55%) 0%, hsl(174 44% 51%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 10% 98%) 100%);
+
+    /* Medical-grade shadows */
+    --shadow-card: 0 4px 6px -1px hsl(210 10% 20% / 0.1), 0 2px 4px -1px hsl(210 10% 20% / 0.06);
+    --shadow-hover: 0 10px 15px -3px hsl(210 10% 20% / 0.1), 0 4px 6px -2px hsl(210 10% 20% / 0.05);
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.3);
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 10% 90%;
+    --input: 210 10% 95%;
+    --ring: 201 83% 55%;
+
+    --radius: 0.75rem;
+
+    /* Animation easing */
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .btn-hero {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-8 py-3 rounded-xl transition-all duration-300 ease-smooth shadow-lg hover:shadow-xl hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium px-8 py-3 rounded-xl transition-all duration-300 ease-smooth shadow-lg hover:shadow-xl hover:scale-105;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-medium px-8 py-3 rounded-xl transition-all duration-300 ease-smooth;
+  }
+
+  /* Card variants */
+  .card-feature {
+    @apply bg-card border border-border rounded-2xl p-6 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-all duration-300 ease-smooth hover:scale-105 cursor-pointer;
+  }
+
+  .card-testimonial {
+    @apply bg-gradient-to-br from-muted to-card border border-border rounded-2xl p-6 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] hover:shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1)] transition-all duration-300 ease-smooth;
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, hsl(201 83% 55%) 0%, hsl(174 44% 51%) 100%);
+  }
+
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+
+  .bg-gradient-secondary {
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(142 71% 65%));
+  }
+
+  .bg-gradient-subtle {
+    background: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 10% 98%) 100%);
+  }
+
+  /* Animation classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-pulse-soft {
+    @apply animate-[pulse-soft_2s_ease-in-out_infinite];
+  }
+
+  .animate-fade-in {
+    @apply animate-[fade-in_0.6s_ease-out_forwards] opacity-0;
+  }
+
+  .animate-slide-up {
+    @apply animate-[slide-up_0.8s_ease-out_forwards] opacity-0 translate-y-8;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .hero-gradient-circle {
+    position: absolute;
+    width: clamp(200px, 40vw, 420px);
+    height: clamp(200px, 40vw, 420px);
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 60%);
+    filter: blur(4px);
+    opacity: 0.6;
+    animation: heroPulse 14s ease-in-out infinite;
+  }
+
+  .hero-blur-ring {
+    position: absolute;
+    inset: -40px;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+    filter: blur(40px);
+  }
+
+  @keyframes heroPulse {
+    0%, 100% {
+      transform: scale(0.9) translateY(0);
+    }
+    50% {
+      transform: scale(1.1) translateY(-20px);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(var(--primary) / 0.5);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+}
