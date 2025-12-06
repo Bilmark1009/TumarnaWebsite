@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -7,17 +8,17 @@ const Footer = () => {
   const [errorMsg, setErrorMsg] = useState('');
 
   const quickLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#features', label: 'Features' },
-    { href: '#screenshots', label: 'Screenshots' },
-    { href: '#about', label: 'About' },
-    { href: '#testimonials', label: 'Reviews' },
-    { href: '#faq', label: 'FAQ' },
-    { href: '#contact', label: 'Contact' },
+    { to: '#home', label: 'Home' },
+    { to: '#features', label: 'Features' },
+    { to: '#screenshots', label: 'Screenshots' },
+    { to: '#about', label: 'About' },
+    { to: '#testimonials', label: 'Reviews' },
+    { to: '#faq', label: 'FAQ' },
+    { to: '#contact', label: 'Contact' },
   ];
 
-  const handleNavClick = (href: string) => {
-    const element = document.querySelector(href);
+  const handleNavClick = (to: string) => {
+    const element = document.querySelector(to);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -25,7 +26,6 @@ const Footer = () => {
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!email) {
       setErrorMsg('Please enter your email address.');
       return;
@@ -64,23 +64,30 @@ const Footer = () => {
   };
 
   return (
-    <footer className="mt-12 bg-slate-950 py-16 text-white">
+    <footer role="contentinfo" className="mt-12 bg-slate-950 py-16 text-white">
       <div className="max-w-7xl mx-auto space-y-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-3 items-stretch">
+        {/* Branding */}
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 items-stretch">
           <div className="space-y-4 h-full">
             <div>
               <span className="text-2xl font-bold">Tumarna</span>
               <p className="mt-2 text-white/80">Medication peace of mind.</p>
             </div>
-            <p className="text-white/70">Made to simplify schedules, prevent missed doses, and keep your day on track.</p>
+            <p className="text-white/70">
+              Made to simplify schedules, prevent missed doses, and keep your day on track.
+            </p>
           </div>
 
+          {/* Quick links */}
           <div className="h-full">
             <h4 className="mb-4 font-semibold">Explore</h4>
             <ul className="space-y-2 text-white/70">
               {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <button onClick={() => handleNavClick(link.href)} className="transition-colors hover:text-white">
+                <li key={link.to}>
+                  <button
+                    onClick={() => handleNavClick(link.to)}
+                    className="transition-colors hover:text-white"
+                  >
                     {link.label}
                   </button>
                 </li>
@@ -88,22 +95,29 @@ const Footer = () => {
             </ul>
           </div>
 
-          
-
+          {/* Newsletter */}
           <div className="h-full">
             <h4 className="mb-4 font-semibold">Stay in the loop</h4>
-            <p className="mb-4 text-sm text-white/70 text-justify">Receive monthly release notes, tips for safe and effective medication management, and early announcements about new features. Keep your medication routine on track and never miss important updates.</p>
-
-            
+            <p className="mb-4 text-sm text-white/70 text-justify">
+              Receive monthly release notes, tips for safe and effective medication management, 
+              and early announcements about new features. Keep your medication routine on track 
+              and never miss important updates.
+            </p>
 
             <form className="space-y-3" onSubmit={handleSubscribe}>
               {successMsg && (
-                <div className="text-green-600 bg-green-50/10 border border-green-500/30 rounded-lg px-3 py-2 text-xs sm:text-sm mb-2">{successMsg}</div>
+                <div className="text-green-600 bg-green-50/10 border border-green-500/30 rounded-lg px-3 py-2 text-xs sm:text-sm mb-2">
+                  {successMsg}
+                </div>
               )}
               {errorMsg && (
-                <div className="text-red-400 bg-red-50/10 border border-red-500/30 rounded-lg px-3 py-2 text-xs sm:text-sm mb-2">{errorMsg}</div>
+                <div className="text-red-400 bg-red-50/10 border border-red-500/30 rounded-lg px-3 py-2 text-xs sm:text-sm mb-2">
+                  {errorMsg}
+                </div>
               )}
+              <label htmlFor="subscribe-email" className="sr-only">Email</label>
               <input
+                id="subscribe-email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -122,12 +136,13 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Legal links */}
         <div className="flex flex-col gap-4 border-t border-white/20 pt-6 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
           <p>© 2025 Tumarna. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
-            <a href="/privacy-policy" className="transition-colors hover:text-white">Privacy Policy</a>
-            <a href="/terms-and-conditions" className="transition-colors hover:text-white">Terms of Service</a>
-            <a href="/security" className="transition-colors hover:text-white">Security</a>
+            <Link to="/privacy-policy" className="transition-colors hover:text-white">Privacy Policy</Link>
+            <Link to="/terms-and-conditions" className="transition-colors hover:text-white">Terms of Service</Link>
+            <Link to="/security" className="transition-colors hover:text-white">Security</Link>
           </div>
         </div>
       </div>
