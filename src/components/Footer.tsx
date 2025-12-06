@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [subscribing, setSubscribing] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+
+  const location = useLocation(); // To check current path
 
   const quickLinks = [
     { to: '#home', label: 'Home' },
@@ -17,10 +19,18 @@ const Footer = () => {
     { to: '#contact', label: 'Contact' },
   ];
 
+  // Handles scrolling to homepage sections
   const handleNavClick = (to: string) => {
-    const element = document.querySelector(to);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname !== '/') {
+      // Navigate to homepage first if not already there
+      window.location.href = '/';
+      setTimeout(() => {
+        const element = document.querySelector(to);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100); // small delay to allow page load
+    } else {
+      const element = document.querySelector(to);
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -30,7 +40,6 @@ const Footer = () => {
       setErrorMsg('Please enter your email address.');
       return;
     }
-
     setSubscribing(true);
     setSuccessMsg('');
     setErrorMsg('');
@@ -43,8 +52,8 @@ const Footer = () => {
           mode: 'no-cors',
           body: new URLSearchParams({
             user_email: email,
-            user_name: 'Subscriber'
-          })
+            user_name: 'Subscriber',
+          }),
         }
       );
 
@@ -140,9 +149,15 @@ const Footer = () => {
         <div className="flex flex-col gap-4 border-t border-white/20 pt-6 text-sm text-white/60 md:flex-row md:items-center md:justify-between">
           <p>© 2025 Tumarna. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
-            <Link to="/privacy-policy" className="transition-colors hover:text-white">Privacy Policy</Link>
-            <Link to="/terms-and-conditions" className="transition-colors hover:text-white">Terms of Service</Link>
-            <Link to="/security" className="transition-colors hover:text-white">Security</Link>
+            <Link to="/privacy-policy" onClick={() => window.scrollTo(0, 0)} className="transition-colors hover:text-white">
+              Privacy Policy
+            </Link>
+            <Link to="/terms-and-conditions" onClick={() => window.scrollTo(0, 0)} className="transition-colors hover:text-white">
+              Terms of Service
+            </Link>
+            <Link to="/security" onClick={() => window.scrollTo(0, 0)} className="transition-colors hover:text-white">
+              Security
+            </Link>
           </div>
         </div>
       </div>
