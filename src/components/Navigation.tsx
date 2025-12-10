@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Download, Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
+import DownloadQRModal from './DownloadQRModal';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
 
   // Handle scroll effect
@@ -94,14 +96,13 @@ const Navigation = () => {
           </a>
 
           <div className="flex items-center space-x-4">
-            <a
-              href="https://github.com/Bilmark1009/Tumarna.apk/releases/download/v1.2.0/application-b8b104d0-7cff-41d6-8fd1-60d0ec991ec4.apk"
-              download
+            <button
+              onClick={() => setIsQRModalOpen(true)}
               className="md:hidden inline-flex items-center px-3 py-1.5 text-xs font-medium rounded-md text-white bg-gradient-to-r from-primary to-primary/80 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/50 transition-all duration-200"
             >
               <Download className="mr-1.5 h-3 w-3" />
               Download
-            </a>
+            </button>
             
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -177,17 +178,20 @@ const Navigation = () => {
               ))}
             </ul>
             
-            <a
-              href="https://github.com/Bilmark1009/Tumarna.apk/releases/download/v1.2.0/application-b8b104d0-7cff-41d6-8fd1-60d0ec991ec4.apk"
-              download
+            <button
+              onClick={() => setIsQRModalOpen(true)}
               className="hidden lg:inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition hover:-translate-y-0.5 hover:bg-primary/20"
             >
               <Download className="h-4 w-4" />
               Download
-            </a>
+            </button>
           </div>
         </div>
       </div>
+      <DownloadQRModal 
+        isOpen={isQRModalOpen} 
+        onClose={() => setIsQRModalOpen(false)} 
+      />
     </nav>
   );
 };

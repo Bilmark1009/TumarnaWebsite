@@ -7,37 +7,44 @@ const features = [
     title: 'Smart, Accurate Medication Reminders',
     description: 'Never miss a dose with customizable alerts that adapt to your schedule.',
     number: '01',
-    highlight: true,
-    color: 'from-blue-500 to-cyan-500',
-    iconBg: 'bg-gradient-to-br from-blue-100 to-cyan-100',
-    iconColor: 'text-blue-600',
+    accentColor: 'from-emerald-500 to-teal-500',
+    accentLight: 'from-emerald-50 to-teal-50',
+    iconBg: 'bg-gradient-to-br from-emerald-100 to-teal-100',
+    iconColor: 'text-emerald-600',
+    borderAccent: 'border-l-4 border-l-emerald-500',
   },
   {
     icon: AlertTriangle,
     title: 'Side Effects & Safety Info Powered by OpenFDA',
     description: 'Get real-time drug details and safety warnings pulled from trusted medical data.',
     number: '02',
-    color: null,
-    iconBg: 'bg-amber-100',
-    iconColor: 'text-amber-600',
+    accentColor: 'from-emerald-500 to-teal-500',
+    accentLight: 'from-emerald-50 to-teal-50',
+    iconBg: 'bg-gradient-to-br from-emerald-100 to-teal-100',
+    iconColor: 'text-emerald-600',
+    borderAccent: 'border-l-4 border-l-emerald-500',
   },
   {
     icon: Users,
     title: 'Multi-User Medication Management',
     description: 'Keep track of medications for yourself, parents, or kids in one organized app.',
     number: '03',
-    color: null,
-    iconBg: 'bg-emerald-100',
+    accentColor: 'from-emerald-500 to-teal-500',
+    accentLight: 'from-emerald-50 to-teal-50',
+    iconBg: 'bg-gradient-to-br from-emerald-100 to-teal-100',
     iconColor: 'text-emerald-600',
+    borderAccent: 'border-l-4 border-l-emerald-500',
   },
   {
     icon: Lock,
     title: 'Offline-Ready With Secure On-Device Storage',
     description: 'Your data stays safe on your device and works even without internet.',
     number: '04',
-    color: null,
-    iconBg: 'bg-rose-100',
-    iconColor: 'text-rose-600',
+    accentColor: 'from-emerald-500 to-teal-500',
+    accentLight: 'from-emerald-50 to-teal-50',
+    iconBg: 'bg-gradient-to-br from-emerald-100 to-teal-100',
+    iconColor: 'text-emerald-600',
+    borderAccent: 'border-l-4 border-l-emerald-500',
   },
 ];
 
@@ -85,45 +92,36 @@ const Features = () => {
           if (el) cardsRef.current[feature.number] = el;
         }}
         data-key={feature.number}
-        className={`group relative flex flex-col gap-6 rounded-3xl border transition-all duration-500 shadow-lg overflow-hidden ${
-          feature.highlight
-            ? 'border-transparent bg-gradient-to-br ' + feature.color + ' p-10 text-white hover:scale-105 hover:shadow-2xl'
-            : 'border-border/70 bg-card/90 p-8 text-foreground shadow-[0_20px_60px_rgba(15,23,42,0.08)] hover:border-primary/40 hover:bg-card hover:shadow-xl'
-        } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`group relative flex flex-col gap-6 rounded-3xl bg-gradient-to-br ${feature.accentLight} border border-border/50 p-8 transition-all duration-500 shadow-lg overflow-hidden hover:shadow-xl hover:border-border/80 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         style={{
           transitionDelay: isVisible ? `${animationDelay}ms` : '0ms',
         }}
       >
-        {/* Accent line on top */}
-        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.highlight ? 'from-white/40 to-transparent' : 'from-primary/40 to-transparent'} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+        {/* Left accent border */}
+        <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${feature.accentColor} opacity-60 group-hover:opacity-100 transition-opacity duration-300`}></div>
 
         {/* Background accent blur */}
-        {!feature.highlight && (
-          <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        )}
+        <div className={`absolute top-0 right-0 w-40 h-40 rounded-full bg-gradient-to-br ${feature.accentColor} blur-3xl opacity-5 group-hover:opacity-10 transition-opacity duration-500`}></div>
 
         {/* Number badge */}
-        <div className={`absolute top-4 right-4 text-sm font-bold opacity-20 group-hover:opacity-30 transition-opacity ${feature.highlight ? 'text-white' : 'text-muted-foreground'}`}>
+        <div className={`absolute top-4 right-4 text-sm font-bold opacity-20 group-hover:opacity-30 transition-opacity text-foreground`}>
           {feature.number}
         </div>
 
         {/* Icon container with enhanced hover effect */}
-        <div className={`rounded-2xl p-4 w-fit transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 ${feature.highlight ? 'bg-white/20 group-hover:bg-white/30' : feature.iconBg + ' group-hover:shadow-lg'}`}>
-          <feature.icon className={`h-8 w-8 transition-all duration-300 group-hover:scale-125 ${feature.highlight ? 'text-white' : feature.iconColor}`} />
+        <div className={`rounded-2xl ${feature.iconBg} p-4 w-fit transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg`}>
+          <feature.icon className={`h-8 w-8 transition-all duration-300 group-hover:scale-125 ${feature.iconColor}`} />
         </div>
 
         {/* Content */}
         <div className="relative z-10 flex-1">
-          <h3 className={`text-lg font-semibold transition-all duration-300 ${feature.highlight ? 'text-white' : 'text-foreground group-hover:text-primary'}`}>
+          <h3 className="text-lg font-semibold text-foreground transition-all duration-300 group-hover:text-primary">
             {feature.title}
           </h3>
-          <p className={`mt-3 text-base leading-relaxed transition-colors duration-300 ${feature.highlight ? 'text-white/90' : 'text-muted-foreground group-hover:text-foreground'}`}>
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
             {feature.description}
           </p>
         </div>
-
-        {/* Bottom accent border */}
-        <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary group-hover:w-full transition-all duration-500"></div>
       </div>
     );
   };

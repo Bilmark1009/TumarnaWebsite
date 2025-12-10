@@ -62,7 +62,7 @@ const Hero = () => {
             <div className="flex flex-col xs:flex-row justify-center lg:justify-start gap-3 sm:gap-4 w-full xs:w-auto">
               {isMobile ? (
                 <a
-                  href="https://github.com/Bilmark1009/Tumarna.apk/releases/download/v1.2.0/application-b8b104d0-7cff-41d6-8fd1-60d0ec991ec4.apk"
+                  href="https://github.com/Bilmark1009/medication-management-expo/releases/download/Tumarnav2.0%2C0/Tumarna.apk"
                   download="Tumarna.apk"
                   className="btn-hero flex items-center justify-center gap-2 bg-primary text-white hover:bg-primary/90 text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 w-full xs:w-auto"
                 >
