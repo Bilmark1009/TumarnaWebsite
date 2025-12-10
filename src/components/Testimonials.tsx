@@ -2,22 +2,22 @@ import { Quote, Star } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Patient Review',
+    name: 'Jea Jusga',
     title: '',
-    quote: 'Reviews are to be followed — all are patient reviews.',
-    rating: 0,
+    quote: 'Tumarna makes it so easy to remember my medications. I love that it sends notifications at the right time',
+    rating: 5,
   },
   {
-    name: 'Patient Review',
+    name: 'Genoveva Marentes',
     title: '',
-    quote: 'Reviews are to be followed — all are patient reviews.',
-    rating: 0,
+    quote: 'I like the multi-user feature; I can manage my family\'s medications all in one app.',
+    rating: 5,
   },
   {
-    name: 'Patient Review',
+    name: 'Maricel Coyoca',
     title: '',
-    quote: 'Reviews are to be followed — all are patient reviews.',
-    rating: 0,
+    quote: 'Tracking my medications has never been this easy',
+    rating: 5,
   }
 ];
 

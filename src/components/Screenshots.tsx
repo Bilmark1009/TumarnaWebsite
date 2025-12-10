@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import screenshot1 from '../assets/app-screenshot-1.jpg';
-import screenshot2 from '../assets/app-screenshot-2.jpg';
-import screenshot3 from '../assets/app-screenshot-3.jpg';
+import screenshot1 from '../assets/Screenshot1.jpg';
+import screenshot2 from '../assets/Screenshot2.jpg';
+import screenshot3 from '../assets/Screenshot3.jpg';
 
 const Screenshots = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

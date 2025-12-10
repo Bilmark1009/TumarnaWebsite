@@ -85,35 +85,39 @@ const Features = () => {
           if (el) cardsRef.current[feature.number] = el;
         }}
         data-key={feature.number}
-        className={`group relative flex flex-col gap-6 rounded-3xl border border-border/70 bg-card/90 p-8 text-foreground shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition-all duration-500 overflow-hidden hover:border-primary/40 hover:shadow-xl hover:scale-[1.02] ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
+        className={`group relative flex flex-col gap-6 rounded-3xl border transition-all duration-500 shadow-lg overflow-hidden ${
+          feature.highlight
+            ? 'border-transparent bg-gradient-to-br ' + feature.color + ' p-10 text-white hover:scale-105 hover:shadow-2xl'
+            : 'border-border/70 bg-card/90 p-8 text-foreground shadow-[0_20px_60px_rgba(15,23,42,0.08)] hover:border-primary/40 hover:bg-card hover:shadow-xl'
+        } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
         style={{
           transitionDelay: isVisible ? `${animationDelay}ms` : '0ms',
         }}
       >
-        {/* Accent line on top (consistent across all cards) */}
-        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+        {/* Accent line on top */}
+        <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.highlight ? 'from-white/40 to-transparent' : 'from-primary/40 to-transparent'} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
 
-        {/* Background accent blur (same for all cards) */}
-        <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        {/* Background accent blur */}
+        {!feature.highlight && (
+          <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        )}
 
         {/* Number badge */}
-        <div className={`absolute top-4 right-4 text-sm font-bold opacity-20 group-hover:opacity-30 transition-opacity text-muted-foreground`}>
+        <div className={`absolute top-4 right-4 text-sm font-bold opacity-20 group-hover:opacity-30 transition-opacity ${feature.highlight ? 'text-white' : 'text-muted-foreground'}`}>
           {feature.number}
         </div>
 
-        {/* Icon container with consistent hover effect */}
-        <div className={`rounded-2xl p-4 w-fit transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 ${feature.iconBg} group-hover:shadow-lg`}>
-          <feature.icon className={`h-8 w-8 transition-all duration-300 group-hover:scale-125 ${feature.iconColor}`} />
+        {/* Icon container with enhanced hover effect */}
+        <div className={`rounded-2xl p-4 w-fit transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 ${feature.highlight ? 'bg-white/20 group-hover:bg-white/30' : feature.iconBg + ' group-hover:shadow-lg'}`}>
+          <feature.icon className={`h-8 w-8 transition-all duration-300 group-hover:scale-125 ${feature.highlight ? 'text-white' : feature.iconColor}`} />
         </div>
 
         {/* Content */}
         <div className="relative z-10 flex-1">
-          <h3 className={`text-lg font-semibold transition-all duration-300 text-foreground group-hover:text-primary`}>
+          <h3 className={`text-lg font-semibold transition-all duration-300 ${feature.highlight ? 'text-white' : 'text-foreground group-hover:text-primary'}`}>
             {feature.title}
           </h3>
-          <p className={`mt-3 text-base leading-relaxed transition-colors duration-300 text-muted-foreground group-hover:text-foreground`}>
+          <p className={`mt-3 text-base leading-relaxed transition-colors duration-300 ${feature.highlight ? 'text-white/90' : 'text-muted-foreground group-hover:text-foreground'}`}>
             {feature.description}
           </p>
         </div>
